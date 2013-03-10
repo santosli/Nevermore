@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 import tornado.ioloop
 import tornado.web
 import tornado.database
@@ -8,7 +10,7 @@ class MainHandler(tornado.web.RequestHandler):
 		db = MysqlHandler()
 				
 		#Add staff test
-		#db.add_staff("1010", "test", 12, "1232345345", "adsf.jpg")
+		db.add_staff("1010", "李拓", 12, "1232345345", "adsf.jpg")
 		
 		#Delete staff test
 		#db.del_staff("1010")
@@ -62,7 +64,7 @@ class MysqlHandler:
 		
 	#Add one staff in db
 	def add_staff(self, sid, name, age, idnumber, spic):
-		self.db.execute("INSERT INTO staff (sid, name, age, idnumber, spic) VALUES ('%s', '%s', %d, '%s', '%s')" % (sid, name, age, idnumber, spic))  	  
+		self.db.execute("INSERT INTO staff (sid, name, age, idnumber, spic) VALUES ('%s', '%s', %d, '%s', '%s')" % (sid, name.decode('utf-8'), age, idnumber, spic))  	  
 		
 	#Update one staff in db
 	#...
